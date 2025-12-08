@@ -14,7 +14,7 @@ export const bcryptUtils = {
       );
 
     try {
-      return bcrypt.hashSync(password, rounds);
+      return bcrypt.hashSync(value, rounds);
     } catch (error) {
       throw createError(
         500,
