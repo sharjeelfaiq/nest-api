@@ -4,8 +4,18 @@
 
 input CreateUserInput {
   email: String!
-  name: String
+  firstName: String
+  isEmailVerified: Boolean!
+  isNewsletterSubscribed: Boolean!
+  lastName: String
+  password: String!
+  role: Role!
 }
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
@@ -17,14 +27,32 @@ type Query {
   user(id: ID!): User!
 }
 
+enum Role {
+  ADMIN
+  SUPER_ADMIN
+  USER
+}
+
 input UpdateUserInput {
   email: String
+  firstName: String
   id: ID!
-  name: String
+  isEmailVerified: Boolean
+  isNewsletterSubscribed: Boolean
+  lastName: String
+  password: String
+  role: Role
 }
 
 type User {
+  createdAt: DateTime!
   email: String!
+  firstName: String
   id: ID!
-  name: String
+  isEmailVerified: Boolean!
+  isNewsletterSubscribed: Boolean!
+  lastName: String
+  password: String!
+  role: String!
+  updatedAt: DateTime!
 }

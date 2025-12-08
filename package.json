@@ -23,7 +23,8 @@
     "db:pull": "npx prisma db pull",
     "db:generate": "npx prisma generate",
     "db:migrate": "npx prisma migrate dev",
-    "db:reset": "npx prisma migrate reset"
+    "db:reset": "npx prisma migrate reset",
+    "db:studio": "npx prisma studio"
   },
   "dependencies": {
     "@apollo/server": "^5.2.0",

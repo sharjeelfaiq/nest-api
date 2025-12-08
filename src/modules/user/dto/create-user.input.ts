@@ -1,4 +1,14 @@
-import { InputType, Field } from '@nestjs/graphql';
+import { InputType, Field, registerEnumType } from '@nestjs/graphql';
+
+enum Role {
+  USER = 'USER',
+  ADMIN = 'ADMIN',
+  SUPER_ADMIN = 'SUPER_ADMIN',
+}
+
+registerEnumType(Role, {
+  name: 'Role',
+});
 
 @InputType()
 export class CreateUserInput {
@@ -11,15 +21,15 @@ export class CreateUserInput {
   @Field()
   email: string;
 
-  @Field()
-  role: string;
+  @Field(() => Role)
+  role: Role;
 
   @Field()
   password: string;
 
   @Field()
-  isEmailVerified?: boolean;
+  isEmailVerified: boolean;
 
   @Field()
-  isNewsletterSubscribed?: boolean;
+  isNewsletterSubscribed: boolean;
 }
